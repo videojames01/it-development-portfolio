@@ -15,9 +15,19 @@ class TaskSeeder extends Seeder
     public function run(): void
     {
         DB::table('tasks')->insert([
-            'section' => 'Dev Ops',
-            'name' => 'Dockerfile LAMP/LEMP stack',
-            'complete' => 0
+            ['section' => 'Dev Ops',
+            'name' => 'Docker LAMP/LEMP stack',
+            'complete' => 1],
+            [
+                'section' => 'Dev Ops',
+                'name' => 'Docker compose',
+                'complete' => 0
+            ],
+            [
+                'section' => 'Dev Ops',
+                'name' => 'Deployment',
+                'complete' => 0
+            ]
         ]);
     }
 }
