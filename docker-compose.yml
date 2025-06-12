@@ -1,0 +1,23 @@
+services:
+    web:
+        image: php-apache-composer
+        ports:
+            - "80:80"
+        depends_on:
+            - portfolio-database
+        volumes:
+            - .:/var/www/html
+    portfolio-database:
+        image: portfolio-mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: root_password
+            MYSQL_DATABASE: it-development-portfolio
+            MYSQL_USER: portfolio-user
+            MYSQL_PASSWORD: Portfolio123
+        ports:
+            - "3306:3306"
+        volumes:
+            - portfolio-database-data:/var/lib/mysql
+volumes:
+    portfolio-database-data:
+        external: true

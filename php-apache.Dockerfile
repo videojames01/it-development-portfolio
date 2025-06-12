@@ -16,7 +16,7 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 
 # Installing packages and extensions for php, composer, laravel, and mysql
 RUN apt-get update && apt-get install -y \
-    unzip libzip-dev libonig-dev libxml2-dev git default-mysql-client \
+    nodejs npm unzip libzip-dev libonig-dev libxml2-dev git default-mysql-client \
     && docker-php-ext-install pdo pdo_mysql mbstring zip bcmath
 
 # Installing composer
