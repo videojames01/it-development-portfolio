@@ -8,3 +8,8 @@ Route::get('/', [TaskController::class, 'index'])->name('tasks.index');
 
 Route::resource('tasks', TaskController::class)
     ->except('index');
+
+// Error routes
+Route::get('/server-error', function () {
+    abort(500);
+});

@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 100px 20px;
+    background-color: #f8f9fa;
+}
+
+.error-code {
+    font-size: 100px;
+    margin-bottom: 20px;
+}
+
+.navigation-links {
+    display: grid;
+    margin-top: 20px;
+}
+
+.navigation-links a {
+    color: dodgerblue;
+    text-decoration: none;
+}
+
+.navigation-links a:hover {
+    color: cornflowerblue;
+}
