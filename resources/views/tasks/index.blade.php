@@ -14,8 +14,12 @@
         <ul>
             @foreach($tasks as $task)
                 @if($task->section == 'Dev Ops')
-                    <li>{{ $task->name }}</li>
-                    <li>{{ $task->complete }}</li>
+                    <li>
+                        {{ $task->name }}
+                        <br>
+                        <a href="{{ route('tasks.show', $task) }}">Show Task</a>
+                    </li>
+
                 @endif
             @endforeach
         </ul>
@@ -25,8 +29,11 @@
         <ul>
             @foreach($tasks as $task)
                 @if($task->section == 'Usability')
-                    <li>{{ $task->name }}</li>
-                    <li>{{ $task->complete }}</li>
+                    <li>
+                        {{ $task->name }}
+                        <br>
+                        <a href="{{ route('tasks.show', $task) }}">Show Task</a>
+                    </li>
                 @endif
             @endforeach
         </ul>
@@ -36,8 +43,11 @@
         <ul>
             @foreach($tasks as $task)
                 @if($task->section == 'Innovation')
-                    <li>{{ $task->name }}</li>
-                    <li>{{ $task->complete }}</li>
+                    <li>
+                        {{ $task->name }}
+                        <br>
+                        <a href="{{ route('tasks.show', $task) }}">Show Task</a>
+                    </li>
                 @endif
             @endforeach
         </ul>

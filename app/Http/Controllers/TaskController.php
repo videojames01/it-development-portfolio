@@ -49,7 +49,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        return view('tasks.show', compact('task'));
     }
 
     /**
@@ -57,7 +57,7 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        return view('tasks.edit', compact('task'));
     }
 
     /**
@@ -65,7 +65,18 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        $request->validate([
+            'section' => 'required|string',
+            'name' => 'required|string|min:3|max:255',
+            'complete' => 'nullable|boolean'
+        ], [
+            'section.required' => '⚠️ Please select a section',
+            'name.required' => '⚠️ Please enter a task name between 3 and 255 characters long.'
+        ]);
+
+        $task->update($request->only(['section', 'name', 'complete']));
+
+        return redirect()->route('tasks.show', $task)->with('success', 'Task updated!');
     }
 
     /**
@@ -73,6 +84,8 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $task->delete();
+
+        return redirect()->route('tasks.index')->with('success', 'Task deleted!');
     }
 }
