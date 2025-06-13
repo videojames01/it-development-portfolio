@@ -74,7 +74,10 @@ class TaskController extends Controller
             'name.required' => '⚠️ Please enter a task name between 3 and 255 characters long.'
         ]);
 
-        $task->update($request->only(['section', 'name', 'complete']));
+        $task->section = $request->section;
+        $task->name = $request->name;
+        $task->complete = $request->has('complete');
+        $task->save();
 
         return redirect()->route('tasks.show', $task)->with('success', 'Task updated!');
     }
