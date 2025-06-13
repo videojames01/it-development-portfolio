@@ -32,9 +32,12 @@ class TaskController extends Controller
     {
         $validated = $request->validate([
             'section' => 'required|string',
-            'name' => 'required|string',
+            'name' => 'required|string|min:3|max:255',
             'complete' => 'nullable|boolean'
-            ]);
+            ], [
+                'section.required' => '⚠️ Please select a section',
+                'name.required' => '⚠️ Please enter a task name between 3 and 255 characters long.'
+        ]);
 
         Task::create($validated);
 
