@@ -48,3 +48,9 @@ Given that a logged in user is on the task creation page, when they leave the ta
 **Why?** <br/>
 The system tests verify that the task creation, from user input through to display on the homepage, functions correctly. Both happy and unhappy paths are tested to ensure that the user story requirements are met.
 Regarding the unit tests, I tested the TaskController's data handling logic and validation rules, as these are core business components that should function correctly apart from each other. These tests ensure that the task creation logic works correctly regardless of any outside factors, such as UI implementation.
+
+# <ins>Test Results</ins>
+![img_1.png](img_1.png)
+As you can see above, I tested not only the happy and unhappy paths of my user stories, but multiple edge cases as well.
+
+# <ins>Evaluation</ins>
