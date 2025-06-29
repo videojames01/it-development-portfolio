@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -12,9 +13,9 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return view('tasks.index', [
-            'tasks' => Task::all()
-        ]);
+        $tasks = Auth::user()->tasks()->get();
+
+        return view('tasks.index', compact('tasks'));
     }
 
     /**
@@ -39,7 +40,7 @@ class TaskController extends Controller
                 'name.required' => '⚠️ Please enter a task name between 3 and 255 characters long.'
         ]);
 
-        Task::create($validated);
+        Auth::user()->tasks()->create($validated);
 
         return redirect()->route('tasks.index');
     }
