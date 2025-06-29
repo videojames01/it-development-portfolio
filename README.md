@@ -54,3 +54,41 @@ Regarding the unit tests, I tested the TaskController's data handling logic and 
 As you can see above, I tested not only the happy and unhappy paths of my user stories, but multiple edge cases as well.
 
 # <ins>Evaluation</ins>
+### Errors That CAN Be Detected by These Tests:
+The tests I've made detect several different kinds of issues, which I've listed below.
+
+<ins>**Validation**</ins> </br>
+**Missing required fields:** Tests verify that task names and sections are required, and user names are mandatory for registration </br>
+**Input length violations:** Both minimum and maximum length constraints are tested for task names and password requirements </br>
+**Format validation:** Email format validation ensures proper email structure during registration </br>
+**Uniqueness constraints:** Email uniqueness is tested to prevent duplicate user accounts
+
+<ins>**Data Integrity**</ins> </br>
+**Password security:** Tests ensure passwords are properly hashed before database storage rather than stored in plain text </br>
+**Authentication and authorization:** Tests verify users can only access their own tasks, preventing unauthorized data access </br>
+**Database relationship integrity:** Tests confirm that task-user relationships work correctly in both directions
+
+<ins>**Business Logic**</ins> </br>
+
+**Task creation workflow:** Tests verify the complete task creation process works with valid data </br>
+**User registration workflow:** Tests confirm the registration process functions properly with valid credentials </br>
+**Data persistence:** Tests ensure that created tasks and users are properly saved to the database
+
+### Errors That CAN'T Be Detected by These Tests:
+While the tests above cover many possible cases, they are not exhaustive. Below I've listed some things that the tests do not cover. </br>
+
+**Database connectivity failures:** Tests don't verify behavior when the database is unavailable or connections fail
+**Performance issues:** No load testing to detect performance degradation under high user volumes or large datasets
+**Cross-browser compatibility:** Browser-specific rendering or functionality issues remain undetected
+**Accessibility compliance:** No verification that the application meets accessibility standards
+**Mobile responsiveness:** No testing of mobile device compatibility or responsive design
+**Cross-Site Request Forgery (CSRF):** No verification of CSRF token validation
+**Network failures:** No testing of behavior during network interruptions or timeouts
+
+### Conclusion
+Based on the automated testing, basic CRUD operations for tasks and users function correctly.
+Input validation, database relationships and data persistence, and authentication are all working as expected.
+However, I can't with 100% certainty say that everything works correctly. Although I believe that I've created a good "testing base" that covers most of the main functionality,
+there's a lot of problems that real world applications face, such as system failures and security threats, that I haven't tested here. Not only that, but the tests I've made are run in a controlled
+environment. In the real world, things can behave unpredictably, and new issues can appear that wouldn't affect basic unit and system testing. Because of this, I am unable to say that "everything works correctly",
+however, I believe that what I have tested is fully functioning and I am confident that it can continue to function under normal conditions.
